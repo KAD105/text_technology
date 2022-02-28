@@ -51,4 +51,6 @@ if __name__ == '__main__':
         specification_dir=APP_SPEC_DIR
     )
     app.add_api(APP_SPEC_FILE)
+    # TODO: it would probably be great to run this with gunicorn instead of the flask
+    #  wsgi
     app.run(port=APP_PORT)

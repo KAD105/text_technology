@@ -15,7 +15,8 @@ RUN pip install -r requirements.txt
 
 FROM python as app
 
-RUN apt-get install libmariadb3 libmariadb-dev
+RUN apt-get update &\
+    apt-get install libmariadb3 libmariadb-dev
 
 WORKDIR /usr/src/app
 COPY --from=python_builder /usr/src/app/venv /usr/src/app/venv
@@ -23,6 +24,6 @@ ENV PATH="/usr/src/app/venv/bin:$PATH"
 
 COPY . .
 
-EXPOSE 8080
+EXPOSE 5000
 
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
